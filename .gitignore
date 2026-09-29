@@ -1,0 +1,16 @@
+# Logs e arquivos de sistema
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+
+# Ambientes virtuais
+.venv/
+env/
+venv/
+__pycache__/
+
+# Backups e rascunhos temporários
+*.bak
+*.tmp
+_backup*/

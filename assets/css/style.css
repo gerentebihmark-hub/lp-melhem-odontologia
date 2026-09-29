@@ -1,0 +1,686 @@
+/* ==========================================================================
+   Melhem Odontologia — LP v2 (direção editorial, paleta mista)
+   Blocos escuros: hero, método, contato, rodapé
+   Blocos claros:  manifesto, especialidades, clínica, corpo clínico, FAQ
+   ========================================================================== */
+
+:root {
+  /* Claros (off-white quente, mesma família da fachada real) */
+  --paper: #f2f0eb;
+  --paper-2: #e8e5de;
+  --ink: #15171b;
+  --ink-soft: #5a5e66;
+  --line-light: rgba(21, 23, 27, 0.08);
+
+  /* Escuros */
+  --night: #1d2025;
+  --night-2: #262a30;
+  --line-dark: rgba(255, 255, 255, 0.08);
+  --on-dark: #f4f2ed;
+  --on-dark-soft: rgba(244, 242, 237, 0.72);
+
+  /* Champagne: claro sobre escuro, profundo sobre claro (contraste) */
+  --champ: #cdbfa6;
+  --champ-light: #e7dfd0;
+  --champ-deep: #74674c;
+
+  --whatsapp: #128c7e;
+  --whatsapp-hover: #0e7367;
+
+  --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --wrap: 1240px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --header-h: 68px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Granulação fina em todo o site (gerada em código: nítida em qualquer tela) */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 1000;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; text-align: left; }
+ul, ol { list-style: none; }
+
+:focus-visible { outline: 2px solid var(--champ-deep); outline-offset: 3px; }
+.method :focus-visible, .contact :focus-visible, .footer :focus-visible, .navbar :focus-visible { outline-color: var(--champ); }
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.ico { width: 1.15em; height: 1.15em; flex: none; }
+
+/* ---------- Tipografia base ---------- */
+.eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--champ-deep);
+}
+.eyebrow .idx {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow .idx::after {
+  content: none;
+  display: none;
+}
+.hero .eyebrow, .method .eyebrow, .contact .eyebrow, .eyebrow-light { color: var(--champ); }
+
+.section-title {
+  font-size: clamp(1.75rem, 3.2vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.section-description {
+  font-size: clamp(0.98rem, 1.05vw, 1.08rem);
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+.hl { color: var(--champ); }
+.hl-dark { color: var(--champ-deep); }
+
+.section { padding-block: clamp(64px, 7.5vw, 120px); position: relative; }
+section[id] { scroll-margin-top: 0; }
+
+/* ---------- Botões e links ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 24px;
+  font-weight: 600;
+  font-size: 0.94rem;
+  letter-spacing: -0.005em;
+  border-radius: 999px;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s var(--ease);
+}
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+  transition-duration: 0.1s;
+}
+.btn-champ { background: var(--champ-light); color: var(--ink); }
+.btn-champ:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.15); }
+.btn-champ:active { transform: translateY(1px) scale(0.98); box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.12); }
+.btn-block { width: 100%; }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding-block: 4px;
+  border-bottom: none;
+  transition: gap 0.35s var(--ease), color 0.3s, transform 0.2s;
+}
+.link-arrow svg, .link-arrow .ico {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.link-arrow:hover { gap: 14px; }
+.link-arrow:hover svg, .link-arrow:hover .ico {
+  transform: translate(3px, -3px);
+}
+.link-arrow:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Cabeçalho
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  color: var(--on-dark);
+  transition: background 0.4s var(--ease), color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.navbar.scrolled {
+  background: rgba(242, 240, 235, 0.94);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--ink);
+  box-shadow: 0 1px 0 var(--line-light);
+}
+.nav-inner {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand-link { display: flex; align-items: center; gap: 12px; position: relative; z-index: 3; }
+.brand-logo-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.brand-meta { display: flex; flex-direction: column; line-height: 1.2; }
+.brand-name { font-weight: 600; font-size: 0.98rem; letter-spacing: -0.01em; }
+.brand-specialty { font-size: 0.72rem; letter-spacing: 0.06em; opacity: 0.7; }
+
+.nav-menu { display: flex; gap: clamp(18px, 2.4vw, 38px); }
+.nav-link { font-size: 0.92rem; font-weight: 500; position: relative; padding-block: 6px; opacity: 0.9; }
+.nav-link::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.nav-link:hover::after { transform: scaleX(1); }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; position: relative; z-index: 3; }
+.nav-action-btn {
+  font-size: 0.9rem; font-weight: 600;
+  padding: 11px 20px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.nav-action-btn:hover {
+  background: var(--champ-light);
+  color: var(--ink);
+  border-color: var(--champ-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.15);
+}
+.nav-action-btn:active {
+  transform: translateY(1px) scale(0.97);
+}
+.navbar.scrolled .nav-action-btn:hover {
+  background: var(--champ-light);
+  color: var(--ink);
+  border-color: var(--champ-light);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-mobile-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; }
+.burger { position: relative; width: 24px; height: 12px; }
+.burger i {
+  position: absolute; left: 0; width: 100%; height: 1.5px; background: currentColor;
+  transition: transform 0.4s var(--ease), top 0.4s var(--ease);
+}
+.burger i:first-child { top: 0; }
+.burger i:last-child { top: 10px; }
+.navbar.mobile-open .burger i:first-child { top: 5px; transform: rotate(45deg); }
+.navbar.mobile-open .burger i:last-child { top: 5px; transform: rotate(-45deg); }
+
+.nav-mobile {
+  position: fixed; inset: 0;
+  z-index: 2;
+  background: var(--night);
+  color: var(--on-dark);
+  padding: calc(var(--header-h) + 32px) var(--gutter) 40px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.4s var(--ease), visibility 0.4s;
+}
+.navbar.mobile-open { color: var(--on-dark); background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.navbar.mobile-open .nav-mobile { opacity: 1; visibility: visible; }
+.mobile-menu-list li { border-bottom: 1px solid var(--line-dark); }
+.mobile-nav-link { display: block; padding: 18px 0; font-size: 1.9rem; font-weight: 500; letter-spacing: -0.03em; }
+
+/* ==========================================================================
+   Hero: centralizado sobre a seda da marca (vetorial)
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex; align-items: center;
+  background: url('../images/seda-melhem.svg') 62% 40% / cover no-repeat, var(--night);
+  color: var(--on-dark);
+  padding: calc(var(--header-h) + 24px) 0 72px;
+  overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 52% 46% at 50% 56%, rgba(29, 32, 37, 0.78), transparent 78%);
+}
+.hero-center { position: relative; display: grid; justify-items: center; text-align: center; }
+.hero .eyebrow { justify-content: center; }
+.hero .hl-dark { color: var(--champ); }
+.hero-title {
+  margin-top: 28px;
+  max-width: 12.5em;
+  font-size: clamp(2.1rem, 4.8vw, 4.4rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.hero-title .dot { margin-left: -0.09em; }
+.hero-lead { margin-top: 24px; max-width: 54ch; font-size: clamp(1rem, 1.1vw, 1.1rem); color: var(--on-dark-soft); }
+.hero-actions { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px 32px; }
+/* ==========================================================================
+   01 · Manifesto + fatos (claro)
+   ========================================================================== */
+.manifesto-text {
+  margin-top: 30px;
+  max-width: 21em;
+  font-size: clamp(1.4rem, 2.5vw, 2.3rem);
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+  text-wrap: pretty;
+}
+.facts {
+  margin-top: clamp(64px, 8vw, 120px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line-light);
+}
+.fact {
+  padding: 28px clamp(14px, 2vw, 32px) 0 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.fact + .fact { padding-left: clamp(14px, 2vw, 32px); border-left: 1px solid var(--line-light); }
+.fact-number { font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 500; letter-spacing: -0.05em; line-height: 1; }
+.fact dd { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.45; }
+.fact dd strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+
+/* ==========================================================================
+   02 · Especialidades (claro)
+   ========================================================================== */
+.specialties { background: var(--paper-2); }
+.section-head { display: grid; gap: 22px; max-width: 980px; margin-bottom: clamp(48px, 6vw, 88px); }
+
+.spec-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+.spec-list { border-top: 1px solid var(--line-light); }
+.spec-row { border-bottom: 1px solid var(--line-light); }
+.spec-head {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2.6em minmax(0, 1fr) 28px;
+  grid-template-areas: "num tag plus" "num title plus";
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 6px;
+  padding: clamp(22px, 2.4vw, 32px) 0;
+}
+.spec-num { grid-area: num; align-self: end; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; color: var(--champ-deep); }
+.spec-title { grid-area: title; font-size: clamp(1.15rem, 1.6vw, 1.5rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; transition: color 0.3s; }
+.spec-tag {
+  grid-area: tag;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.spec-plus { grid-area: plus; position: relative; width: 18px; height: 18px; justify-self: end; }
+.spec-plus::before, .spec-plus::after {
+  content: ''; position: absolute; left: 0; top: 50%; width: 100%; height: 1.5px; background: currentColor;
+  transition: transform 0.45s var(--ease);
+}
+.spec-plus::after { transform: rotate(90deg); }
+.spec-row.is-open .spec-plus::after { transform: rotate(0deg); }
+.spec-head:hover .spec-title { color: var(--champ-deep); }
+
+.spec-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.55s var(--ease); }
+.spec-row.is-open .spec-panel { grid-template-rows: 1fr; }
+.spec-panel-inner { overflow: hidden; min-height: 0; }
+.spec-panel-body {
+  padding: 0 0 clamp(26px, 3vw, 38px) calc(2.6em + 16px);
+  display: grid; gap: 22px; justify-items: start;
+  max-width: 62ch;
+  color: var(--ink-soft);
+}
+.spec-inline-img { display: none; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 20px; }
+.spec-panel-body .link-arrow { color: var(--ink); }
+
+.spec-preview {
+  border-radius: 28px;
+  position: sticky;
+  top: calc(var(--header-h) + 28px);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--paper);
+}
+.spec-preview-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.06);
+  transition: opacity 0.7s var(--ease), transform 1.2s var(--ease);
+}
+.spec-preview-img.active { opacity: 1; transform: scale(1); }
+
+/* ==========================================================================
+   03 · Método (escuro)
+   ========================================================================== */
+.method { background: url('../images/seda-melhem.svg') 20% 55% / cover no-repeat, var(--night); color: var(--on-dark); }
+.method-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(40px, 8vw, 140px);
+  align-items: start;
+}
+.method-left { position: sticky; top: calc(var(--header-h) + 40px); display: grid; gap: 26px; }
+.method .section-description { color: var(--on-dark-soft); }
+.steps { border-top: 1px solid var(--line-dark); }
+.step {
+  display: grid;
+  grid-template-columns: clamp(64px, 8vw, 120px) minmax(0, 1fr);
+  gap: 20px;
+  padding-block: clamp(32px, 3.6vw, 52px);
+  border-bottom: 1px solid var(--line-dark);
+}
+.step-number { font-size: clamp(2.2rem, 3.6vw, 3.4rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.06em; color: var(--champ); }
+.step-title { font-size: clamp(1.2rem, 1.7vw, 1.55rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 14px; }
+.step-desc { color: var(--on-dark-soft); max-width: 46ch; }
+
+/* ==========================================================================
+   04 · A Clínica
+   ========================================================================== */
+.clinic { padding-bottom: clamp(24px, 4vw, 56px); }
+.clinic .section-head { max-width: none; margin-bottom: clamp(40px, 5vw, 72px); }
+@media (min-width: 1025px) {
+  .clinic .section-head { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; column-gap: clamp(40px, 6vw, 96px); row-gap: 22px; }
+  .clinic .section-head .eyebrow { grid-column: 1 / -1; }
+}
+.facade-showcase { width: 100%; border-radius: 28px; overflow: hidden; box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.35); margin-bottom: clamp(40px, 5vw, 72px); }
+.facade-full-img { display: block; width: 100%; height: auto; }
+.clinic-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--line-light);
+}
+.clinic-point { display: grid; align-content: start; gap: 12px; padding-right: clamp(16px, 3vw, 48px); }
+.clinic-point + .clinic-point { padding-left: clamp(16px, 3vw, 48px); border-left: 1px solid var(--line-light); }
+.point-idx { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--champ-deep); }
+.clinic-point h3 { font-size: clamp(1.05rem, 1.4vw, 1.25rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
+.clinic-point p { color: var(--ink-soft); font-size: 0.98rem; }
+
+/* ==========================================================================
+   05 · Corpo clínico: roster tipográfico
+   ========================================================================== */
+.team { background: var(--paper); padding-top: clamp(24px, 4vw, 56px); }
+.roster { border-top: 1px solid var(--line-light); }
+.roster-row {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr);
+  gap: clamp(20px, 3vw, 56px);
+  align-items: start;
+  padding-block: clamp(30px, 4vw, 56px);
+  border-bottom: 1px solid var(--line-light);
+}
+.roster-name { font-size: clamp(2rem, 4.2vw, 3.8rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1.02; }
+.roster-meta { display: grid; gap: 6px; justify-items: start; font-size: 0.95rem; padding-top: 0.5em; }
+.roster-badge {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 10px; background: var(--ink); color: var(--paper); border-radius: 999px; margin-bottom: 6px;
+}
+.roster-cro { font-weight: 600; letter-spacing: 0.02em; }
+.roster-spec { color: var(--ink-soft); }
+.roster-bio { display: grid; gap: 20px; justify-items: start; color: var(--ink-soft); padding-top: 0.5em; }
+.roster-bio .link-arrow { color: var(--ink); }
+
+/* ==========================================================================
+   06 · FAQ
+   ========================================================================== */
+.faq-section { background: var(--paper-2); }
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(36px, 8vw, 128px);
+  align-items: start;
+}
+.faq-left { position: sticky; top: calc(var(--header-h) + 40px); display: grid; gap: 22px; }
+.faq-container { border-top: 1px solid var(--line-light); }
+.faq-item { border-bottom: 1px solid var(--line-light); }
+.faq-question {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 28px 0;
+  font-size: clamp(1rem, 1.3vw, 1.2rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.25;
+  transition: color 0.3s;
+}
+.faq-question:hover { color: var(--champ-deep); }
+.faq-icon { position: relative; width: 18px; height: 18px; flex: none; }
+.faq-icon::before, .faq-icon::after {
+  content: ''; position: absolute; left: 0; top: 50%; width: 100%; height: 1.5px; background: currentColor;
+  transition: transform 0.45s var(--ease);
+}
+.faq-icon::after { transform: rotate(90deg); }
+.faq-item.active .faq-icon::after { transform: rotate(0deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s var(--ease); }
+.faq-answer p { padding: 0 0 30px; color: var(--ink-soft); max-width: 62ch; }
+
+/* ==========================================================================
+   07 · Contato (escuro)
+   ========================================================================== */
+.contact { color: var(--on-dark); background: linear-gradient(rgba(29, 32, 37, 0.6), rgba(29, 32, 37, 0.6)), url('../images/seda-melhem.svg') 80% 30% / cover no-repeat, var(--night); padding-block: clamp(64px, 7.5vw, 120px); scroll-margin-top: 0; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(44px, 8vw, 128px);
+  align-items: start;
+}
+.contact-info-col { display: grid; gap: 28px; justify-items: start; }
+.contact-title { font-size: clamp(2.1rem, 4.6vw, 4.2rem); font-weight: 500; line-height: 0.98; letter-spacing: -0.045em; text-wrap: balance; }
+.contact-desc { color: var(--on-dark-soft); max-width: 44ch; font-size: 1.08rem; }
+.contact-phone {
+  display: inline-flex; align-items: center; gap: 16px;
+  font-size: clamp(1.45rem, 2.6vw, 2.3rem); font-weight: 500; letter-spacing: -0.035em;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line-dark);
+  transition: border-color 0.3s, color 0.3s;
+}
+.contact-phone:hover { color: var(--champ); border-color: var(--champ); }
+.contact-address { display: flex; gap: 12px; align-items: flex-start; color: var(--on-dark-soft); }
+.contact-address .ico { margin-top: 0.22em; color: var(--champ); }
+
+.contact-form { display: grid; gap: 30px; }
+.form-group { display: grid; gap: 8px; }
+.form-label { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--champ); }
+.form-input, .form-select {
+  width: 100%;
+  background: transparent;
+  color: var(--on-dark);
+  font: inherit; font-size: 1.15rem;
+  padding: 12px 0 14px;
+  border: 0; border-bottom: 1px solid var(--line-dark);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.form-input::placeholder { color: rgba(244, 242, 237, 0.38); }
+.form-input:focus, .form-select:focus { border-bottom-color: var(--champ); }
+.form-input.invalid { border-bottom-color: #e08a7a; }
+.form-select {
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23cdbfa6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 2px center;
+  padding-right: 28px; cursor: pointer;
+}
+.form-select option { color: #15171b; background: #fff; }
+.form-msg { min-height: 1.4em; margin-top: -10px; font-size: 0.92rem; color: #e8a596; }
+
+/* ==========================================================================
+   Rodapé (compacto)
+   ========================================================================== */
+.footer { background: var(--night); color: var(--on-dark-soft); padding-top: clamp(36px, 4vw, 52px); }
+.footer-main { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; }
+.footer-brand-title { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; color: var(--on-dark); }
+.footer-rt { font-size: 0.82rem; margin-top: 2px; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 0.9rem; }
+.footer-nav a { transition: color 0.3s; }
+.footer-nav a:hover { color: var(--on-dark); }
+.footer-social-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.footer-social-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 9px 16px; font-size: 0.86rem; font-weight: 500;
+  border: 1px solid var(--line-dark); border-radius: 999px;
+  transition: border-color 0.3s, color 0.3s;
+}
+.footer-social-btn:hover { border-color: var(--champ); color: var(--on-dark); }
+.footer-info { display: flex; flex-wrap: wrap; gap: 6px 28px; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line-dark); font-size: 0.85rem; }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; padding-block: 16px 24px; border-top: 1px solid var(--line-dark); font-size: 0.78rem; }
+.bmk-signature { display: flex; align-items: center; gap: 12px; opacity: 0.85; }
+.bmk-signature img { height: 20px; width: auto; }
+/* ---------- WhatsApp flutuante ---------- */
+.floating-whatsapp {
+  position: fixed; right: clamp(16px, 2.4vw, 32px); bottom: clamp(16px, 2.4vw, 32px); z-index: 90;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 20px; border-radius: 999px;
+  background: var(--whatsapp); color: #fff;
+  font-weight: 600; font-size: 0.92rem;
+  box-shadow: 0 14px 34px -10px rgba(18, 140, 126, 0.55), 0 0 0 0 rgba(18, 140, 126, 0.5);
+  transition: background 0.3s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  animation: waFloatGlow 3s infinite ease-in-out;
+}
+.js .floating-whatsapp { opacity: 0; pointer-events: none; transform: translateY(14px); transition: opacity 0.4s var(--ease), transform 0.4s var(--ease), background 0.3s; }
+.js .floating-whatsapp.show { opacity: 1; pointer-events: auto; transform: none; }
+.floating-whatsapp .ico { width: 22px; height: 22px; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.floating-whatsapp:hover { background: var(--whatsapp-hover); transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 40px -8px rgba(18, 140, 126, 0.65); }
+.floating-whatsapp:hover .ico { transform: scale(1.1) rotate(4deg); }
+.floating-whatsapp:active { transform: translateY(1px) scale(0.97); box-shadow: 0 6px 18px -4px rgba(18, 140, 126, 0.5); }
+
+@keyframes waFloatGlow {
+  0%, 100% {
+    box-shadow: 0 14px 34px -10px rgba(18, 140, 126, 0.5), 0 0 0 0 rgba(18, 140, 126, 0.3);
+  }
+  50% {
+    box-shadow: 0 16px 36px -8px rgba(18, 140, 126, 0.65), 0 0 0 8px rgba(18, 140, 126, 0);
+  }
+}
+
+/* ---------- Revelar ao rolar (só com JS ativo) ---------- */
+.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.js .reveal.revealed { opacity: 1; transform: none; }
+.delay-1 { transition-delay: 0.08s !important; }
+.delay-2 { transition-delay: 0.16s !important; }
+.delay-3 { transition-delay: 0.24s !important; }
+.delay-4 { transition-delay: 0.32s !important; }
+
+/* ==========================================================================
+   Responsivo
+   ========================================================================== */
+@media (max-width: 1024px) {
+  :root { --header-h: 68px; }
+  .nav-desktop-menu, .nav-action-btn { display: none; }
+  .nav-mobile-toggle { display: inline-flex; }
+
+
+  .spec-layout { grid-template-columns: 1fr; }
+  .spec-preview { display: none; }
+  .spec-inline-img { display: block; }
+
+  .method-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; }
+  .method-left, .faq-left { position: static; }
+
+  .roster-row { grid-template-columns: 1fr 1fr; }
+  .roster-name { grid-column: 1 / -1; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid > div:first-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 700px) {
+  body { font-size: 16px; }
+  .brand-specialty { display: none; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fact { padding-bottom: 28px; }
+  .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+  .fact:nth-child(n + 3) { border-top: 1px solid var(--line-light); }
+
+  .spec-head { grid-template-columns: 2.2em minmax(0, 1fr) 24px; }
+  .spec-panel-body { padding-left: 0; }
+  .team { padding-top: 24px; }
+
+  .step { grid-template-columns: 1fr; gap: 14px; }
+
+  .facade-showcase { width: 100%; border-radius: 28px; overflow: hidden; box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.35); margin-bottom: clamp(40px, 5vw, 72px); }
+.facade-full-img { display: block; width: 100%; height: auto; }
+.clinic-points { grid-template-columns: 1fr; gap: 32px; }
+  .clinic-point, .clinic-point + .clinic-point { padding: 0; border-left: 0; }
+  .clinic-point + .clinic-point { padding-top: 32px; border-top: 1px solid var(--line-light); }
+
+  .roster-row { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr; }
+  .floating-whatsapp span { display: none; }
+  .floating-whatsapp { padding: 15px; }
+  .hero { background: linear-gradient(rgba(29, 32, 37, 0.62), rgba(29, 32, 37, 0.62)), url('../images/seda-melhem.svg') 70% 30% / cover no-repeat, var(--night); }
+  .hero-actions { align-items: stretch; width: 100%; }
+  .hero-actions .link-arrow { align-self: center; }
+  .hero-actions .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+/* Corpo clínico: Dr. Nicola em destaque, os outros menores */
+.btn-ink { background: var(--ink); color: var(--paper); }
+.btn-ink:hover { background: var(--champ-deep); color: #fff; transform: translateY(-2px); }
+.team-layout { display: grid; gap: 20px; }
+.doctor-feature {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  border-radius: 36px; overflow: hidden;
+  background: linear-gradient(155deg, #ece5d6 0%, #d9cfba 100%);
+  box-shadow: 0 30px 60px -36px rgba(21, 23, 27, 0.45);
+}
+.doctor-photo { margin: 0; align-self: end; padding: clamp(20px, 3vw, 44px) clamp(16px, 2.4vw, 36px) 0; }
+.doctor-photo img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; object-position: 50% 8%; filter: drop-shadow(0 26px 30px rgba(21, 23, 27, 0.35)); }
+.doctor-body { display: grid; gap: 16px; justify-items: start; padding: clamp(28px, 4.4vw, 72px) clamp(24px, 4.4vw, 72px) clamp(28px, 4.4vw, 72px) clamp(8px, 2vw, 32px); }
+.doctor-name { font-size: clamp(1.9rem, 3.4vw, 3rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.02; }
+.doctor-cro { font-weight: 600; }
+.doctor-cro span { font-weight: 400; color: var(--ink-soft); }
+.doctor-bio { color: var(--ink-soft); max-width: 46ch; }
+.doctor-body .btn { margin-top: 8px; }
+.doctor-others { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.doctor-card { display: grid; gap: 8px; align-content: start; padding: clamp(24px, 2.6vw, 36px); border-radius: 28px; background: var(--paper-2); border: 1px solid var(--line-light); }
+.doctor-card h3 { font-size: clamp(1.2rem, 1.7vw, 1.5rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+.doctor-card .doctor-cro { font-size: 0.92rem; }
+.doctor-card p { color: var(--ink-soft); font-size: 0.96rem; }
+@media (max-width: 900px) {
+  .doctor-feature { grid-template-columns: 1fr; }
+  .doctor-photo { padding: 28px 28px 0; max-width: 360px; margin-inline: auto; }
+  .doctor-body { padding: 8px 26px 32px; }
+  .doctor-others { grid-template-columns: 1fr; }
+}
+
+
+
