@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -107,26 +107,63 @@
 
   <main id="conteudo">
 
-    <!-- HERO: título, texto e botões centralizados sobre a seda da marca -->
+    <!-- HERO: alinhado à esquerda com formulário à direita -->
     <section class="hero">
-      <div class="wrap hero-center">
-        <p class="eyebrow reveal"><span class="idx">Nanuque, MG</span> Estética e Reabilitação Oral</p>
+      <div class="wrap hero-grid">
+        <div class="hero-left">
+          <h1 class="hero-title reveal delay-1">O padrão de excelência que o seu sorriso <span class="hl-dark">exige<span class="dot">.</span></span></h1>
 
-        <h1 class="hero-title reveal delay-1">O padrão de excelência que o seu sorriso <span class="hl-dark">exige<span class="dot">.</span></span></h1>
+          <p class="hero-lead reveal delay-2">
+            Tratamentos integrados de implantes dentários, reabilitação oral e facetas de porcelana com tecnologia digital, precisão milimétrica e absoluto conforto em Nanuque.
+          </p>
 
-        <p class="hero-lead reveal delay-2">
-          Tratamentos integrados de implantes dentários, reabilitação oral e facetas de porcelana com tecnologia digital, precisão milimétrica e absoluto conforto em Nanuque.
-        </p>
+          <div class="hero-actions reveal delay-3">
+            <a href="https://wa.me/5533997108990?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Melhem%20Odontologia%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" class="btn btn-champ">
+              <svg class="ico" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
+              <span>Agendar no WhatsApp</span>
+            </a>
+          </div>
+        </div>
 
-        <div class="hero-actions reveal delay-3">
-          <a href="https://wa.me/5533997108990?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Melhem%20Odontologia%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" class="btn btn-champ">
-            <svg class="ico" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
-            <span>Agendar no WhatsApp</span>
-          </a>
-          <a href="#contato" class="link-arrow">
-            <span>Preencher Formulário</span>
-            <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
-          </a>
+        <div class="hero-form-col reveal delay-2">
+          <div class="hero-form-card">
+            <div class="hero-form-head">
+              <span class="hero-form-badge">Atendimento Exclusivo</span>
+              <h3 class="hero-form-title">Agende sua Avaliação</h3>
+              <p class="hero-form-sub">Preencha abaixo e nossa equipe entrará em contato prontamente.</p>
+            </div>
+
+            <form id="hero-contact-form" class="hero-form" novalidate>
+              <div class="form-group">
+                <label for="hero-nome" class="form-label">Nome Completo</label>
+                <input type="text" id="hero-nome" name="nome" class="form-input" placeholder="Digite seu nome" autocomplete="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="hero-telefone" class="form-label">Telefone ou WhatsApp</label>
+                <input type="tel" id="hero-telefone" name="telefone" class="form-input" placeholder="(33) 99999 9999" autocomplete="tel" required>
+              </div>
+
+              <div class="form-group">
+                <label for="hero-interesse" class="form-label">Procedimento de Interesse</label>
+                <select id="hero-interesse" name="interesse" class="form-select">
+                  <option value="Implantes Dentários e Protocolo">Implantes Dentários e Protocolo</option>
+                  <option value="Facetas e Lentes de Contato">Facetas e Lentes de Contato</option>
+                  <option value="Alinhadores Invisíveis">Alinhadores Invisíveis</option>
+                  <option value="Próteses e Reabilitação">Próteses e Reabilitação</option>
+                  <option value="Clareamento Dental">Clareamento Dental</option>
+                  <option value="Avaliação Geral">Avaliação Geral</option>
+                </select>
+              </div>
+
+              <p class="form-msg" id="hero-form-msg" role="alert" aria-live="polite"></p>
+
+              <button type="submit" class="btn btn-champ btn-block">
+                <svg class="ico" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
+                <span>Solicitar Avaliação</span>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -154,17 +191,17 @@
             <article class="spec-row is-open">
               <button class="spec-head" type="button" aria-expanded="true">
                 <span class="spec-num">01</span>
-                <span class="spec-title">Implantes Dentários e Protocolo Fixo</span>
-                <span class="spec-tag">Reabilitação Oral Definitiva</span>
+                <span class="spec-title">Próteses e Reabilitação Completa</span>
+                <span class="spec-tag">Função e Mastigação</span>
                 <span class="spec-plus" aria-hidden="true"></span>
               </button>
               <div class="spec-panel">
                 <div class="spec-panel-inner">
                   <div class="spec-panel-body">
-                    <img class="spec-inline-img" src="./assets/images/treatments/implantes.webp" alt="Implantes Dentários e Carga Imediata" loading="lazy">
-                    <p>Diga adeus à insegurança e ao desconforto de próteses móveis. Recupere dentes perdidos com fixação de alta estabilidade, cirurgia guiada por computador e a possibilidade de dentes fixos em tempo reduzido.</p>
-                    <a href="https://wa.me/5533997108990?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20Implantes%20Dent%C3%A1rios%20e%20Protocolo." target="_blank" rel="noopener noreferrer" class="link-arrow">
-                      <span>Consultar sobre Implantes</span>
+                    <img class="spec-inline-img" src="./assets/images/treatments/proteses.webp" alt="Próteses Dentárias e Reabilitação" loading="lazy">
+                    <p>Soluções biomecânicas personalizadas para restabelecer a dimensão vertical, a mordida correta e a estética dos lábios.</p>
+                    <a href="https://wa.me/5533997108990?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20Pr%C3%B3teses%20Dent%C3%A1rias." target="_blank" rel="noopener noreferrer" class="link-arrow">
+                      <span>Saiba mais</span>
                       <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
                     </a>
                   </div>
@@ -196,17 +233,17 @@
             <article class="spec-row">
               <button class="spec-head" type="button" aria-expanded="false">
                 <span class="spec-num">03</span>
-                <span class="spec-title">Próteses e Reabilitação Completa</span>
-                <span class="spec-tag">Função e Mastigação</span>
+                <span class="spec-title">Implantes Dentários e Protocolo Fixo</span>
+                <span class="spec-tag">Reabilitação Oral Definitiva</span>
                 <span class="spec-plus" aria-hidden="true"></span>
               </button>
               <div class="spec-panel">
                 <div class="spec-panel-inner">
                   <div class="spec-panel-body">
-                    <img class="spec-inline-img" src="./assets/images/treatments/proteses.webp" alt="Próteses Dentárias e Reabilitação" loading="lazy">
-                    <p>Soluções biomecânicas personalizadas para restabelecer a dimensão vertical, a mordida correta e a estética dos lábios.</p>
-                    <a href="https://wa.me/5533997108990?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20Pr%C3%B3teses%20Dent%C3%A1rias." target="_blank" rel="noopener noreferrer" class="link-arrow">
-                      <span>Saiba mais</span>
+                    <img class="spec-inline-img" src="./assets/images/treatments/implantes.webp" alt="Implantes Dentários e Carga Imediata" loading="lazy">
+                    <p>Diga adeus à insegurança e ao desconforto de próteses móveis. Recupere dentes perdidos com fixação de alta estabilidade, cirurgia guiada por computador e a possibilidade de dentes fixos em tempo reduzido.</p>
+                    <a href="https://wa.me/5533997108990?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20Implantes%20Dent%C3%A1rios%20e%20Protocolo." target="_blank" rel="noopener noreferrer" class="link-arrow">
+                      <span>Consultar sobre Implantes</span>
                       <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
                     </a>
                   </div>
@@ -260,9 +297,9 @@
 
           <!-- Prévia fixa (desktop): troca conforme a linha em foco -->
           <div class="spec-preview" aria-hidden="true">
-            <img class="spec-preview-img active" src="./assets/images/treatments/implantes.webp" alt="" loading="lazy">
+            <img class="spec-preview-img active" src="./assets/images/treatments/proteses.webp" alt="" loading="lazy">
             <img class="spec-preview-img" src="./assets/images/treatments/lentes.webp" alt="" loading="lazy">
-            <img class="spec-preview-img" src="./assets/images/treatments/proteses.webp" alt="" loading="lazy">
+            <img class="spec-preview-img" src="./assets/images/treatments/implantes.webp" alt="" loading="lazy">
             <img class="spec-preview-img" src="./assets/images/treatments/aparelhos.webp" alt="" loading="lazy">
             <img class="spec-preview-img" src="./assets/images/treatments/clareamento.webp" alt="" loading="lazy">
           </div>

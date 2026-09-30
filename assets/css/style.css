@@ -263,31 +263,163 @@ section[id] { scroll-margin-top: 0; }
 .hero {
   position: relative;
   min-height: 100svh;
-  display: flex; align-items: center;
-  background: url('../images/seda-melhem.svg') 62% 40% / cover no-repeat, var(--night);
-  color: var(--on-dark);
+  display: flex;
+  align-items: center;
+  background: var(--night) url('../images/seda-melhem.svg') 62% 40% / cover no-repeat;
+  color: #ffffff;
   padding: calc(var(--header-h) + 24px) 0 72px;
   overflow: hidden;
 }
 .hero::before {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 52% 46% at 50% 56%, rgba(29, 32, 37, 0.78), transparent 78%);
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(13, 15, 18, 0.45) 0%, rgba(13, 15, 18, 0.75) 100%);
 }
-.hero-center { position: relative; display: grid; justify-items: center; text-align: center; }
-.hero .eyebrow { justify-content: center; }
-.hero .hl-dark { color: var(--champ); }
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+.hero-left {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.hero .eyebrow { justify-content: flex-start; }
+.hero .hl-dark { color: #e7dfd0; }
 .hero-title {
-  margin-top: 28px;
-  max-width: 12.5em;
-  font-size: clamp(2.1rem, 4.8vw, 4.4rem);
+  margin-top: 0;
+  max-width: 14em;
+  font-size: clamp(1.68rem, 3.84vw, 3.52rem);
   font-weight: 600;
-  line-height: 1.04;
+  line-height: 1.08;
   letter-spacing: -0.035em;
+  color: #ffffff;
   text-wrap: balance;
+  text-align: left;
 }
 .hero-title .dot { margin-left: -0.09em; }
-.hero-lead { margin-top: 24px; max-width: 54ch; font-size: clamp(1rem, 1.1vw, 1.1rem); color: var(--on-dark-soft); }
-.hero-actions { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px 32px; }
+.hero-lead {
+  margin-top: 24px;
+  max-width: 52ch;
+  font-size: clamp(0.98rem, 1.05vw, 1.08rem);
+  color: rgba(255, 255, 255, 0.85);
+  text-align: left;
+  line-height: 1.6;
+}
+.hero-actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px 28px;
+  width: 100%;
+  text-align: left;
+}
+
+/* Formulário do Hero */
+.hero-form-col {
+  width: 100%;
+}
+.hero-form-card {
+  background: rgba(21, 24, 29, 0.82);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  padding: clamp(28px, 3.5vw, 40px);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+.hero-form-head {
+  margin-bottom: 24px;
+}
+.hero-form-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--champ);
+  margin-bottom: 8px;
+}
+.hero-form-title {
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  line-height: 1.2;
+}
+.hero-form-sub {
+  font-size: 0.86rem;
+  color: rgba(244, 242, 237, 0.68);
+  margin-top: 6px;
+  line-height: 1.45;
+}
+.hero-form {
+  display: grid;
+  gap: 20px;
+}
+.hero-form .form-group {
+  display: grid;
+  gap: 6px;
+}
+.hero-form .form-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--champ);
+}
+.hero-form .form-input,
+.hero-form .form-select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.98rem;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+.hero-form .form-input:focus,
+.hero-form .form-select:focus {
+  border-color: var(--champ);
+  background: rgba(255, 255, 255, 0.08);
+}
+.hero-form .form-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.hero-form .form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23cdbfa6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.hero-form .form-select option {
+  color: #15171b;
+  background: #ffffff;
+}
+.hero-form .form-msg {
+  min-height: 1.2em;
+  font-size: 0.88rem;
+  color: #e8a596;
+}
 /* ==========================================================================
    01 · Manifesto + fatos (claro)
    ========================================================================== */
@@ -597,6 +729,9 @@ section[id] { scroll-margin-top: 0; }
   :root { --header-h: 68px; }
   .nav-desktop-menu, .nav-action-btn { display: none; }
   .nav-mobile-toggle { display: inline-flex; }
+
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-form-card { max-width: 520px; }
 
 
   .spec-layout { grid-template-columns: 1fr; }

@@ -111,34 +111,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // 7. Formulário: envia direto para o WhatsApp
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    const msg = document.getElementById('form-msg');
-    const nomeInput = document.getElementById('nome');
-    const telefoneInput = document.getElementById('telefone');
-    const interesseSelect = document.getElementById('interesse');
+  // 7. Formulários: envia direto para o WhatsApp
+  const setupForm = (formId, msgId, nomeId, telId, interesseId) => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    const msg = document.getElementById(msgId);
+    const nomeInput = document.getElementById(nomeId);
+    const telefoneInput = document.getElementById(telId);
+    const interesseSelect = document.getElementById(interesseId);
 
     [nomeInput, telefoneInput].forEach((input) => {
+      if (!input) return;
       input.addEventListener('input', () => {
         input.classList.remove('invalid');
-        msg.textContent = '';
+        if (msg) msg.textContent = '';
       });
     });
 
-    contactForm.addEventListener('submit', (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      const nome = nomeInput.value.trim();
-      const telefone = telefoneInput.value.trim();
+      const nome = nomeInput ? nomeInput.value.trim() : '';
+      const telefone = telefoneInput ? telefoneInput.value.trim() : '';
       const interesse = interesseSelect ? interesseSelect.value : 'Avaliação Geral';
 
-      nomeInput.classList.toggle('invalid', !nome);
-      telefoneInput.classList.toggle('invalid', !telefone);
+      if (nomeInput) nomeInput.classList.toggle('invalid', !nome);
+      if (telefoneInput) telefoneInput.classList.toggle('invalid', !telefone);
 
       if (!nome || !telefone) {
-        msg.textContent = 'Por favor, preencha seu nome e seu WhatsApp.';
-        (!nome ? nomeInput : telefoneInput).focus();
+        if (msg) msg.textContent = 'Por favor, preencha seu nome e seu WhatsApp.';
+        if (!nome && nomeInput) nomeInput.focus();
+        else if (telefoneInput) telefoneInput.focus();
         return;
       }
 
@@ -151,7 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
       link.rel = 'noopener noreferrer';
       link.click();
     });
-  }
+  };
+
+  setupForm('hero-contact-form', 'hero-form-msg', 'hero-nome', 'hero-telefone', 'hero-interesse');
+  setupForm('contact-form', 'form-msg', 'nome', 'telefone', 'interesse');
 
   // 8. Animação de entrada ao rolar
   const revealElements = document.querySelectorAll('.reveal');
