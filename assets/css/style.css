@@ -266,7 +266,7 @@ section[id] { scroll-margin-top: 0; }
   min-height: 100svh;
   display: flex;
   align-items: center;
-  background: #0f1114 url('../images/hero-doutores.webp') right 20% center / cover no-repeat;
+  background: #0f1114 url('../images/hero-doutores.webp') right 18% top 28% / cover no-repeat;
   color: #ffffff;
   padding: calc(var(--header-h) + 24px) 0 72px;
   overflow: hidden;
@@ -762,7 +762,7 @@ section[id] { scroll-margin-top: 0; }
   .nav-mobile-toggle { display: inline-flex; }
 
   .hero {
-    background-position: right 15% top 10%;
+    background-position: right 15% top 24%;
   }
   .hero::before {
     background: linear-gradient(
