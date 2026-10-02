@@ -26,7 +26,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- CSS Principal -->
-  <link rel="stylesheet" href="./assets/css/style.css?v=2">
+  <link rel="stylesheet" href="./assets/css/style.css?v=3">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -107,53 +107,51 @@
 
   <main id="conteudo">
 
-    <!-- HERO: alinhado à esquerda com formulário à direita -->
+    <!-- HERO: centralizado/alinhado com formulário logo abaixo do título -->
     <section class="hero">
-      <div class="wrap hero-grid">
+      <div class="wrap hero-wrap-stacked">
         <div class="hero-left">
           <h1 class="hero-title reveal delay-1">O padrão de excelência que o seu sorriso <span class="hl-dark">exige<span class="dot">.</span></span></h1>
 
+          <div class="hero-form-col reveal delay-2">
+            <div class="hero-form-card">
+              <div class="hero-form-head">
+                <span class="hero-form-badge">Atendimento Exclusivo</span>
+                <h3 class="hero-form-title">Agende sua Avaliação</h3>
+                <p class="hero-form-sub">Preencha abaixo e nossa equipe entrará em contato prontamente.</p>
+              </div>
 
-        </div>
+              <form id="hero-contact-form" class="hero-form" novalidate>
+                <div class="form-group">
+                  <label for="hero-nome" class="form-label">Nome Completo</label>
+                  <input type="text" id="hero-nome" name="nome" class="form-input" placeholder="Digite seu nome" autocomplete="name" required>
+                </div>
 
-        <div class="hero-form-col reveal delay-2">
-          <div class="hero-form-card">
-            <div class="hero-form-head">
-              <span class="hero-form-badge">Atendimento Exclusivo</span>
-              <h3 class="hero-form-title">Agende sua Avaliação</h3>
-              <p class="hero-form-sub">Preencha abaixo e nossa equipe entrará em contato prontamente.</p>
+                <div class="form-group">
+                  <label for="hero-telefone" class="form-label">Telefone ou WhatsApp</label>
+                  <input type="tel" id="hero-telefone" name="telefone" class="form-input" placeholder="(33) 99999 9999" autocomplete="tel" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="hero-interesse" class="form-label">Procedimento de Interesse</label>
+                  <select id="hero-interesse" name="interesse" class="form-select">
+                    <option value="Implantes Dentários e Protocolo">Implantes Dentários e Protocolo</option>
+                    <option value="Facetas e Lentes de Contato">Facetas e Lentes de Contato</option>
+                    <option value="Alinhadores Invisíveis">Alinhadores Invisíveis</option>
+                    <option value="Próteses e Reabilitação">Próteses e Reabilitação</option>
+                    <option value="Clareamento Dental">Clareamento Dental</option>
+                    <option value="Avaliação Geral">Avaliação Geral</option>
+                  </select>
+                </div>
+
+                <p class="form-msg" id="hero-form-msg" role="alert" aria-live="polite"></p>
+
+                <button type="submit" class="btn btn-champ btn-block">
+                  <svg class="ico" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
+                  <span>Solicitar Avaliação</span>
+                </button>
+              </form>
             </div>
-
-            <form id="hero-contact-form" class="hero-form" novalidate>
-              <div class="form-group">
-                <label for="hero-nome" class="form-label">Nome Completo</label>
-                <input type="text" id="hero-nome" name="nome" class="form-input" placeholder="Digite seu nome" autocomplete="name" required>
-              </div>
-
-              <div class="form-group">
-                <label for="hero-telefone" class="form-label">Telefone ou WhatsApp</label>
-                <input type="tel" id="hero-telefone" name="telefone" class="form-input" placeholder="(33) 99999 9999" autocomplete="tel" required>
-              </div>
-
-              <div class="form-group">
-                <label for="hero-interesse" class="form-label">Procedimento de Interesse</label>
-                <select id="hero-interesse" name="interesse" class="form-select">
-                  <option value="Implantes Dentários e Protocolo">Implantes Dentários e Protocolo</option>
-                  <option value="Facetas e Lentes de Contato">Facetas e Lentes de Contato</option>
-                  <option value="Alinhadores Invisíveis">Alinhadores Invisíveis</option>
-                  <option value="Próteses e Reabilitação">Próteses e Reabilitação</option>
-                  <option value="Clareamento Dental">Clareamento Dental</option>
-                  <option value="Avaliação Geral">Avaliação Geral</option>
-                </select>
-              </div>
-
-              <p class="form-msg" id="hero-form-msg" role="alert" aria-live="polite"></p>
-
-              <button type="submit" class="btn btn-champ btn-block">
-                <svg class="ico" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
-                <span>Solicitar Avaliação</span>
-              </button>
-            </form>
           </div>
         </div>
       </div>
