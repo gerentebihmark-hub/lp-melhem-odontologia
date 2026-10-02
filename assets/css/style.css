@@ -279,16 +279,18 @@ section[id] { scroll-margin-top: 0; }
   z-index: 1;
   background: linear-gradient(
     90deg,
-    rgba(15, 17, 20, 0.94) 0%,
-    rgba(15, 17, 20, 0.85) 38%,
-    rgba(15, 17, 20, 0.45) 65%,
-    rgba(15, 17, 20, 0.25) 100%
+    rgba(15, 17, 20, 0.90) 0%,
+    rgba(15, 17, 20, 0.72) 36%,
+    rgba(15, 17, 20, 0.20) 58%,
+    rgba(15, 17, 20, 0) 78%,
+    rgba(15, 17, 20, 0) 100%
   ),
   linear-gradient(
     180deg,
-    rgba(15, 17, 20, 0.65) 0%,
-    rgba(15, 17, 20, 0.15) 45%,
-    rgba(15, 17, 20, 0.85) 100%
+    rgba(15, 17, 20, 0.45) 0%,
+    rgba(15, 17, 20, 0) 25%,
+    rgba(15, 17, 20, 0) 70%,
+    rgba(15, 17, 20, 0.65) 100%
   );
 }
 .hero-grid,
@@ -765,9 +767,9 @@ section[id] { scroll-margin-top: 0; }
   .hero::before {
     background: linear-gradient(
       180deg,
-      rgba(15, 17, 20, 0.88) 0%,
-      rgba(15, 17, 20, 0.72) 40%,
-      rgba(15, 17, 20, 0.92) 100%
+      rgba(15, 17, 20, 0.75) 0%,
+      rgba(15, 17, 20, 0.35) 35%,
+      rgba(15, 17, 20, 0.85) 100%
     );
   }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
