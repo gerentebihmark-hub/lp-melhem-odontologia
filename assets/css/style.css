@@ -314,7 +314,7 @@ section[id] { scroll-margin-top: 0; }
 .hero-title {
   margin-top: 0;
   max-width: 14em;
-  font-size: clamp(1.68rem, 3.84vw, 3.52rem);
+  font-size: clamp(1.51rem, 3.45vw, 3.16rem);
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.035em;
