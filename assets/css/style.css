@@ -373,7 +373,7 @@ section[id] { scroll-margin-top: 0; }
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 .hero-form-head {
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 .hero-form-badge {
   display: inline-block;
