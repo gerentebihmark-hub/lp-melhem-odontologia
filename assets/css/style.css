@@ -28,6 +28,7 @@
   --whatsapp-hover: #0e7367;
 
   --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
 
   --wrap: 1240px;
   --gutter: clamp(20px, 4vw, 56px);
@@ -258,14 +259,14 @@ section[id] { scroll-margin-top: 0; }
 .mobile-nav-link { display: block; padding: 18px 0; font-size: 1.9rem; font-weight: 500; letter-spacing: -0.03em; }
 
 /* ==========================================================================
-   Hero: centralizado sobre a seda da marca (vetorial)
+   Hero: Imagem dos Doutores com gradiente escuro e tipografia editorial
    ========================================================================== */
 .hero {
   position: relative;
   min-height: 100svh;
   display: flex;
   align-items: center;
-  background: var(--night) url('../images/seda-melhem.svg') 62% 40% / cover no-repeat;
+  background: #0f1114 url('../images/hero-doutores.webp') right 20% center / cover no-repeat;
   color: #ffffff;
   padding: calc(var(--header-h) + 24px) 0 72px;
   overflow: hidden;
@@ -276,7 +277,19 @@ section[id] { scroll-margin-top: 0; }
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(13, 15, 18, 0.45) 0%, rgba(13, 15, 18, 0.75) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(15, 17, 20, 0.94) 0%,
+    rgba(15, 17, 20, 0.85) 38%,
+    rgba(15, 17, 20, 0.45) 65%,
+    rgba(15, 17, 20, 0.25) 100%
+  ),
+  linear-gradient(
+    180deg,
+    rgba(15, 17, 20, 0.65) 0%,
+    rgba(15, 17, 20, 0.15) 45%,
+    rgba(15, 17, 20, 0.85) 100%
+  );
 }
 .hero-grid,
 .hero-wrap-stacked {
@@ -289,11 +302,11 @@ section[id] { scroll-margin-top: 0; }
   justify-content: flex-start;
 }
 .hero-wrap-stacked .hero-left {
-  max-width: 640px;
+  max-width: 620px;
 }
 .hero-wrap-stacked .hero-form-col {
-  margin-top: 36px;
-  max-width: 540px;
+  margin-top: 32px;
+  max-width: 520px;
 }
 .hero-grid {
   display: grid;
@@ -310,19 +323,21 @@ section[id] { scroll-margin-top: 0; }
   text-align: left;
 }
 .hero .eyebrow { justify-content: flex-start; }
-.hero .hl-dark { color: #e7dfd0; }
+.hero .hl-dark { color: var(--champ-light); font-style: italic; }
 .hero-title {
   margin-top: 0;
-  max-width: 14em;
-  font-size: clamp(1.51rem, 3.45vw, 3.16rem);
+  max-width: 13.5em;
+  font-family: var(--font-serif);
+  font-size: clamp(2.35rem, 5.2vw, 4.4rem);
   font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: #ffffff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.65);
   text-wrap: balance;
   text-align: left;
 }
-.hero-title .dot { margin-left: -0.09em; }
+.hero-title .dot { margin-left: -0.06em; color: var(--champ); }
 .hero-lead {
   margin-top: 24px;
   max-width: 52ch;
@@ -744,6 +759,17 @@ section[id] { scroll-margin-top: 0; }
   .nav-desktop-menu, .nav-action-btn { display: none; }
   .nav-mobile-toggle { display: inline-flex; }
 
+  .hero {
+    background-position: right 15% top 10%;
+  }
+  .hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 17, 20, 0.88) 0%,
+      rgba(15, 17, 20, 0.72) 40%,
+      rgba(15, 17, 20, 0.92) 100%
+    );
+  }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-form-card { max-width: 520px; }
 
